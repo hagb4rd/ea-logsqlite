@@ -32,3 +32,6 @@ Thumbs.db
 # Backup directory
 git-ignore
 .backup
+
+# SQLite
+*.sqlite
