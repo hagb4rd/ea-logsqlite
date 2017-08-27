@@ -1,23 +1,22 @@
 {
-  "name": "ea-logsqite",
-  "version": "0.0.8",
+  "name": "ea-logsqlite",
+  "version": "0.0.9",
   "description": "sqlite based log-writer and search engine",
-  "engines": {
-    "node": ">= v7.1.0"
-  },
   "main": "lib/logsqlite.js",
   "bin": {
     "log": "./cli.js"
   },
-  "scripts": {
-    "start": "node ./cli.js"
-  },
-  "directories": {
-    "lib": "lib"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hagb4rd//ea-logsqlite.git"
+    "url": "https://github.com/hagb4rd//ea-logsqlite.git"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "sqlite3": "^3.1.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "log",
@@ -28,14 +27,6 @@
     "sqlite",
     "irc"
   ],
-  "author": "hagb4rd <hagb4rd@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hagb4rd/ea-logsqlite/issues"
-  },
-  "homepage": "https://github.com/hagb4rd/ea-logsqlite#readme",
-  "dependencies": {
-    "minimist": "^1.2.0",
-    "sqlite3": "^3.1.9"
-  }
+  "author": "hagb4rd@gmail.com",
+  "license": "MIT"
 }
