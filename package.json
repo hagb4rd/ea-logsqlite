@@ -1,15 +1,16 @@
 {
   "name": "ea-logsqite",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "sqlite based log-writer and search engine",
+  "engines": {
+    "node": ">= v7.1.0"
+  },
   "main": "lib/logsqlite.js",
   "bin": {
-    "log": "./cli.js",
-    "logs": "./cli.js",
-    "ea-log": "./cli.js"
+    "log": "./cli.js"
   },
   "scripts": {
-    "test": "node ./test.js"
+    "start": "node ./cli.js"
   },
   "directories": {
     "lib": "lib"

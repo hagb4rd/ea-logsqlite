@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var args = require("minimist")(process.argv);
 var util = require("util");
 var path = require('path');
