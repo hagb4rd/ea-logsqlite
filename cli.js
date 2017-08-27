@@ -2,12 +2,12 @@ var args = require("minimist")(process.argv);
 var util = require("util");
 var path = require('path');
 //npm -i ea-logsqlite --save 
-var LogSqlite = require("ea-logsqlite"); 
+var LogSqlite = require("./lib/logsqlite"); 
 
-
+var basedir = process.env["EA_LOGSQLITE_PATH" ]|| process.env["HOME"] || process.env["USERPROFILE"] || __dirname;
 
 async function cli(args){
-    var dbpath = dbname => { dbname=dbname||"cli"; return path.resolve(`${__dirname}/db/${dbname}.sqlite`).toString(); };
+    var dbpath = dbname => { dbname=dbname||"cli"; return path.resolve(`${basedir}/${dbname}.sqlite`).toString(); };
     var text = "";
     if(args.p) {
         text +=  await pipeIn();
