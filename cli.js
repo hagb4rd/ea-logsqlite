@@ -4,12 +4,19 @@ var path = require('path');
 //npm -i ea-logsqlite --save 
 var LogSqlite = require("./lib/logsqlite"); 
 
-var basedir = process.env["EA_LOGSQLITE_PATH" ]|| process.env["HOME"] || process.env["USERPROFILE"] || __dirname;
+var basedir = process.env["EA_LOGSQLITE_PATH"] || process.env["HOME"] || process.env["USERPROFILE"] || __dirname;
 
 async function cli(args){
-    var dbpath = dbname => { dbname=dbname||"cli"; return path.resolve(`${basedir}/${dbname}.sqlite`).toString(); };
+    var dbpath = dbname => { dbname=dbname||"ea-log"; return path.resolve(`${basedir}/${dbname}.sqlite`).toString(); };
+    var channel = args["c"]||args["channel"]||"cli";
+    var dbfile = args["f"]||args["file"]||dbpath();
     var text = "";
-    if(args.p) {
+    
+    var db = new LogSqlite(dbfile);
+    await db.connect();
+    if(args.s) {
+        return db.find(args.s,channel);
+    } else if(args.p) {
         text +=  await pipeIn();
     } else {
         
@@ -19,22 +26,17 @@ async function cli(args){
            
     }
     if(text.length<=0 && !args.s) {
-        throw Error("USAGE: A) echo hello world | log -p .. via pipe or as arguments B) log hello world");
-    }
-    var channel = args["c"]||args["channel"]||"cli";
-    var dbfile = args["f"]||args["file"]||dbpath();
-    
-    var db = new LogSqlite(dbfile);
-    await db.connect();
-    if(args.s) {
-        return db.find(args.s,channel);
+        throw Error("USAGE: A) echo hello world | log -p  B) log hello world C) log -s \"hello AND world\"");
     } else {
         db.write(text,channel);
         return text;
     }
 }
-cli(args).then(console.log).catch(e=>console.log("[ERROR]", util.inspect(e.message||e)));
-
+//cli(args).then(console.log).catch(e=>console.log("[ERROR]", util.inspect(e.message||e)));
+cli(args).then(console.log).catch(e=>{
+    process.stderr.write(e.message);
+    process.exit(1);
+});
 
 
 async function pipeIn(stream) {
