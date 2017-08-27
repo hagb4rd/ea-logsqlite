@@ -15,13 +15,13 @@ npm install -g ea-logsqlite
 export EA_LOGSQLITE_PATH='/home/user'
 
 #write log via pipe
-echo "hello world" | log -p  
+echo "hello world" | logs -p  
 
 #write log 
-log hello world
+logs hello world
 
 #search log
-log -s "hello AND world" 
+logs -s "hello AND world" 
 
 ```
 

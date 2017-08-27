@@ -1,10 +1,12 @@
 {
-  "name": "ea-logsqlite",
-  "version": "0.0.5",
+  "name": "ea-logsqite",
+  "version": "0.0.6",
   "description": "sqlite based log-writer and search engine",
   "main": "lib/logsqlite.js",
   "bin": {
-    "log": "./cli.js"
+    "log": "./cli.js",
+    "logs": "./cli.js",
+    "ea-log": "./cli.js"
   },
   "scripts": {
     "test": "node ./test.js"
@@ -18,6 +20,7 @@
   },
   "keywords": [
     "log",
+    "logs",
     "writer",
     "search",
     "sql",
