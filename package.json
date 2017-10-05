@@ -1,6 +1,6 @@
 {
   "name": "ea-logsqlite",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "sqlite based log-writer and search engine",
   "main": "lib/logsqlite.js",
   "bin": {
